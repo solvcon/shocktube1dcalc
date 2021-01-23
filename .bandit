@@ -1,0 +1,3 @@
+[bandit]
+targets: shocktube1dcalc
+exclude: tests
