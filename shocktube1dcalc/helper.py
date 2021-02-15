@@ -4,7 +4,7 @@ from shocktubecalc import sod
 
 from shocktube1dcalc import solver_analytic
 
-TUBE_RADIUS = 0.5
+TUBE_DIAPHRAGM = 0.5
 TUBE_LENGTH = 1.0
 TUBE_LEFT_X = 0.0
 TUBE_RIGHT_X = TUBE_LEFT_X + TUBE_LENGTH
@@ -30,10 +30,8 @@ def get_shocktube1d_values(time_moment):
         TUBE_RIGHT_X - TUBE_X_COORDINATE_SHIFT,
         MESH_POINTS_NUMBER,
     )
-    analytic_solver = solver_analytic.Solver()
-    analytic_solution = analytic_solver.get_analytic_solution(
-        mesh_x_array, t=time_moment
-    )
+    shocktube = solver_analytic.ShockTube()
+    analytic_solution = shocktube.get_analytic_solution(mesh_x_array, t=time_moment)
     # convert to shocktubecalc compatible format
     ao_rho_list = []
     ao_u_list = []
@@ -65,7 +63,7 @@ def get_shocktubecalc_values(time_moment):
     shocktubecalc_values = sod.solve(
         left_state=(STATE_LEFT_P, STATE_LEFT_RHO, STATE_LEFT_U),
         right_state=(STATE_RIGHT_P, STATE_RIGHT_RHO, STATE_RIGHT_U),
-        geometry=(TUBE_LEFT_X, TUBE_RIGHT_X, TUBE_RADIUS),
+        geometry=(TUBE_LEFT_X, TUBE_RIGHT_X, TUBE_DIAPHRAGM),
         t=time_moment,
         gamma=1.4,
         npts=MESH_POINTS_NUMBER,
