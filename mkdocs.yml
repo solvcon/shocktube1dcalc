@@ -1,0 +1,9 @@
+site_name: shocktube-1d-caculator
+nav:
+  - Home: README.md
+  - Contributing: contributing.md
+theme:
+  name: 'material'
+repo_url: http://github.com/tai271828/shocktube1dcalc
+remote_branch: gh-pages
+remote_name: origin
