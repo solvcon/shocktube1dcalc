@@ -24,6 +24,40 @@ MESH_POINTS_NUMBER = 50
 DEVIATION_PRECISION = 0.000000001
 
 
+def convert_format1_to_format2(solutions):
+    # convert to shocktubecalc compatible format
+    mesh = []
+    rho_list = []
+    u_list = []
+    p_list = []
+
+    for solution_point in solutions:
+        mesh.append(solution_point[0])
+        rho_list.append(solution_point[1])
+        u_list.append(solution_point[2])
+        p_list.append(solution_point[3])
+
+    shocktube1d_values = [
+        {"Positions": "NA"},
+        {"States": "NA"},
+        {
+            "x": mesh,
+            "rho": rho_list,
+            "u": u_list,
+            "p": p_list,
+        },
+    ]
+
+    return shocktube1d_values
+
+
+def get_cese_mesh(solutions):
+    mesh = []
+    for solution in solutions:
+        mesh.append(solution[0])
+
+    return mesh
+
 def get_shocktube1d_values(time_moment):
     mesh_x_array = np.linspace(
         TUBE_LEFT_X - TUBE_X_COORDINATE_SHIFT,

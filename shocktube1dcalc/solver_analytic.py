@@ -16,15 +16,9 @@ class ShockTube:
     The core to generate the 1D Sod tube test.
     """
 
-    def __init__(
-        self,
-        rho_left=1.0,
-        u_left=0.0,
-        p_left=1.0,
-        rho_right=0.125,
-        u_right=0.0,
-        p_right=0.1,
-    ):
+    def __init__(self,
+                 rho_left=1.0, u_left=0.0, p_left=1.0,
+                 rho_right=0.125, u_right=0.0, p_right=0.1):
         # initial condition
         # [(rhol, ul, pl), (rhor, ur, pr)]
         #
@@ -161,18 +155,15 @@ class ShockTube:
             beta = self.BETA
             gamma = self.GAMMA
             return (x / p1) - (
-                (
-                    1.0
-                    - ((gamma - 1.0) * c5 * ((x / p5) - 1.0))
-                    / (
-                        c1
-                        * (
-                            (2.0 * gamma * (gamma - 1.0 + (gamma + 1.0) * (x / p5)))
-                            ** 0.5
-                        )
+                    (
+                            1.0
+                            - ((gamma - 1.0) * c5 * ((x / p5) - 1.0))
+                            / (
+                                    c1
+                                    * ((2.0 * gamma * (gamma - 1.0 + (gamma + 1.0) * (x / p5))) ** 0.5)
+                            )
                     )
-                )
-                ** (1.0 / beta)
+                    ** (1.0 / beta)
             )
 
         return so.newton(analytic_pressure_region4, x0)
