@@ -40,12 +40,7 @@ def convert_format1_to_format2(solutions):
     shocktube1d_values = [
         {"Positions": "NA"},
         {"States": "NA"},
-        {
-            "x": mesh,
-            "rho": rho_list,
-            "u": u_list,
-            "p": p_list,
-        },
+        {"x": mesh, "rho": rho_list, "u": u_list, "p": p_list},
     ]
 
     return shocktube1d_values
@@ -57,6 +52,7 @@ def get_cese_mesh(solutions):
         mesh.append(solution[0])
 
     return mesh
+
 
 def get_shocktube1d_values(time_moment):
     mesh_x_array = np.linspace(

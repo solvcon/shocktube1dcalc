@@ -1,17 +1,11 @@
 #!/usr/bin/env python
 import collections
+
 import matplotlib.animation as animation
 import matplotlib.pyplot as plt
 
-from shocktube1dcalc import (
-    solver_analytic,
-    cese,
-    helper,
-)
-from shocktube1dcalc.helper import (
-    get_deviation_values,
-    convert_format1_to_format2,
-)
+from shocktube1dcalc import cese, helper, solver_analytic
+from shocktube1dcalc.helper import convert_format1_to_format2, get_deviation_values
 
 TIME_STEP_SIZE = 0.004
 TIME_TOTAL_ELAPSE = 0.4
@@ -94,7 +88,7 @@ def plot_solution_single_frame_overlapping(
     marker_base,
     marker_target
 ):
-    containers = plot_solution_single_frame_overlapping_init(
+    plot_solution_single_frame_overlapping_init(
         frame,
         titles_ordered,
         time_moment,

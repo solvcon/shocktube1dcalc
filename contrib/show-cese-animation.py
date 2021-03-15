@@ -4,10 +4,11 @@
 #
 # Description:
 #     An example to show the iteration animation
+import matplotlib.animation as animation
+import matplotlib.pyplot as plt
+
 import shocktube1dcalc.cese as cese
 import shocktube1dcalc.helper_plot as helper_plot
-import matplotlib.pyplot as plt
-import matplotlib.animation as animation
 
 fig = plt.figure()
 frame_seq = []

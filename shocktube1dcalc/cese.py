@@ -13,6 +13,7 @@
 #
 
 import numpy as np
+
 from shocktube1dcalc import generator_mesh
 
 gmesh = generator_mesh.Mesher()
@@ -55,7 +56,7 @@ class ShockTube(object):
         p_l=P_L,
         rho_r=RHO_R,
         u_r=U_R,
-        p_r=P_R
+        p_r=P_R,
     ):
         grid_point_number = round(((mesh_x_stop - mesh_x_start) / grid_size_x) + 1)
         mesh_x = np.linspace(mesh_x_start, mesh_x_stop, grid_point_number)
@@ -184,13 +185,8 @@ class ShockTube(object):
             # (4.25) in chang95, which also uses (4.12) and (4.13)
             mtx_s[:, j] = (
                 (dx / 4.0) * mtx_qx[:, j]
-                + (dt / dx)
-                * mtx_f
-                * mtx_q[:, j]
-                + (dt / dx)
-                * (dt / 4.0)
-                * mtx_f
-                * mtx_qt[:, j]
+                + (dt / dx) * mtx_f * mtx_q[:, j]
+                + (dt / dx) * (dt / 4.0) * mtx_f * mtx_qt[:, j]
             )
 
     def calc_cese_status_after_half_dt(self):
@@ -220,19 +216,10 @@ class ShockTube(object):
             )
             # (4.27) and (4.36) in chang95
             vxl = np.asarray(
-                (
-                    mtx_qn[:, j + 1]
-                    - mtx_q[:, j]
-                    - half_dt * mtx_qt[:, j]
-                )
-                / half_dx
+                (mtx_qn[:, j + 1] - mtx_q[:, j] - half_dt * mtx_qt[:, j]) / half_dx
             )
             vxr = np.asarray(
-                (
-                    mtx_q[:, j + 1]
-                    + half_dt * mtx_qt[:, j + 1]
-                    - mtx_qn[:, j + 1]
-                )
+                (mtx_q[:, j + 1] + half_dt * mtx_qt[:, j + 1] - mtx_qn[:, j + 1])
                 / half_dx
             )
             # (4.39) in chang95
@@ -287,7 +274,7 @@ class Data(object):
     ]
 
     _includes = [
-        "iteration", # total iteration number
+        "iteration",  # total iteration number
         "it_nb",  # the current iteration number, 0 <= it_nb < iteration, -1 means the iteration does not start (yet)
         "it_pt_nb",  # how many x point number to iterate
         "grid_size_t",
@@ -348,7 +335,9 @@ class Data(object):
         # and a mesh of at least 102 grid points are needed.
 
         total_iterated_pt_nb = self.it_nb + 3
-        solution_x_start_index = int((len(self.mesh_x) / 2) - (total_iterated_pt_nb / 2))
+        solution_x_start_index = int(
+            (len(self.mesh_x) / 2) - (total_iterated_pt_nb / 2)
+        )
         for i in range(total_iterated_pt_nb):
             solution_x = self.mesh_x[i + solution_x_start_index]
             solution_rho = self.mtx_q[0, i]
