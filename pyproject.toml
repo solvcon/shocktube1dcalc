@@ -90,11 +90,23 @@ norecursedirs = [
 
 [tool.poetry]
 name = "shocktube1dcalc"
-version = "1.0.0"
+version = "1.0.1"
 description = "1D shocktube caculator to provide analytic solutions"
 authors = ["Taihsiang Ho (tai271828) <tai271828@gmail.com>"]
-license = "BSD 3 license"
+license = "BSD-3-Clause"
 readme = "docs/README.md"
+classifiers = [
+    "Environment :: Console",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Utilities",
+    "Development Status :: 6 - Mature",
+    "Programming Language :: Python :: 3 :: Only",
+    "Intended Audience :: Science/Research",
+    "Natural Language :: English",
+]
 
 [tool.poetry.dependencies]
 python = "^3.7"
