@@ -55,7 +55,7 @@ numeric_solution = shocktube.data.solution
 See [Contributing](contributing.md)
 
 ## Authors
-Taihsiang Ho (tai271828) <tai271828@gmail.com>
+Taihsiang Ho (tai271828) <tai271828@solvcon.net>
 
 
 Created from [Lee-W/cookiecutter-python-template](https://github.com/Lee-W/cookiecutter-python-template/tree/0.7.1) version 0.7.1
