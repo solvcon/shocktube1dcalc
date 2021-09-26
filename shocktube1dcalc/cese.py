@@ -1,15 +1,10 @@
 # Description:
-#   1D Sod Tube solver based on CESE method.
-#
-#   This program is implemented by OO style to be
-#   a part of ipython notebook demo materials.
+#   1D Sod shock tube solver based on CESE method.
 #
 #   The derivation of the equations for the analytic solution
 #   is based on the book,
 #   Principles of Computational Fluid Dynamics,
 #   written by Pieter Wesseling.
-#   Or, people could refer to the solvcon website
-#   http://www.solvcon.net/en/latest/cese.html#sod-s-shock-tube-problem
 #
 
 import numpy as np
@@ -30,7 +25,6 @@ U_R = 0.0
 P_R = 0.1
 
 
-# noinspection PyUnresolvedReferences
 class ShockTube(object):
     """
     CESE method to generate the 1D Sod tube solution
