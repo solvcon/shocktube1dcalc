@@ -90,7 +90,7 @@ norecursedirs = [
 
 [tool.poetry]
 name = "shocktube1dcalc"
-version = "1.0.1"
+version = "1.0.2"
 description = "1D shocktube caculator to provide analytic solutions"
 authors = ["Taihsiang Ho (tai271828) <tai271828@gmail.com>"]
 license = "BSD-3-Clause"
