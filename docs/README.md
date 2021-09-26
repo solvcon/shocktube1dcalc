@@ -43,7 +43,8 @@ from shocktube1dcalc import cese
 elapsed_time = 0.4
 cese_grid_size_t = 0.004
 # multiply 2 for half grids, so total iteration number should be double
-iteration_number = round(elapsed_time / cese_grid_size_t * 2)
+# the iteration number is always less than 1 by the grid number
+iteration_number = round(elapsed_time / cese_grid_size_t * 2) - 1
 
 shocktube = cese.ShockTube(iteration=iteration_number, grid_size_t=cese_grid_size_t)
 shocktube.run_cese_iteration()
