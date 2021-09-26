@@ -1,0 +1,13 @@
+.hg/
+.DS_Store
+tmp/
+
+generated_eps/
+handover/
+*.toc
+*.aux
+*.log
+*.out
+*.dvi
+*.ps
+*.pdf
