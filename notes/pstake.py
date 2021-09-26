@@ -33,22 +33,21 @@
 """Convert a pstricks LaTeX file (.tex) to an image file."""
 
 
-import sys
-import os
-import subprocess
-import contextlib
 import argparse
-import tempfile
-import shutil
-import re
 import collections
+import contextlib
+import os
+import re
+import shutil
+import subprocess
+import sys
+import tempfile
 
 try:
-    from docutils import nodes
-    from docutils.parsers.rst import Directive
-    from docutils.parsers.rst import directives, states
-    from docutils.parsers.rst.roles import set_classes
     import sphinx  # noqa: F401
+    from docutils import nodes
+    from docutils.parsers.rst import Directive, directives, states
+    from docutils.parsers.rst.roles import set_classes
     HAS_SPHINX = True
 except ImportError:
     HAS_SPHINX = False
