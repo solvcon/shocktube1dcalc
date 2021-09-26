@@ -108,6 +108,15 @@ classifiers = [
     "Natural Language :: English",
 ]
 
+homepage = "https://github.com/solvcon/shocktube1dcalc"
+repository = "https://github.com/solvcon/shocktube1dcalc"
+documentation = "https://github.com/solvcon/shocktube1dcalc"
+
+keywords = ["CFD", "science"]
+
+[tool.poetry.urls]
+'Bug Tracker' = "https://github.com/solvcon/shocktube1dcalc/issues"
+
 [tool.poetry.dependencies]
 python = "^3.7"
 numpy = "^1.19.5"
